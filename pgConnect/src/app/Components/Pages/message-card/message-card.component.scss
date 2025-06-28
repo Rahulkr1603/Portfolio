@@ -1,0 +1,121 @@
+.message-container {
+  display: flex;
+  height: 80vh;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 0 8rem 0 8rem;
+}
+
+.friend-list {
+  width: 30%;
+  background-color: #f5f5f5;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.friend-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  transition: background 0.2s;
+  background-color: var(--bg-color);
+
+  &:hover {
+    background-color: var(--btn-hover);
+  }
+}
+.friend-item.active-friend {
+  background: var(--btn-active);
+  border-left: 4px solid var(--btn-hover);
+}
+
+.friend-info {
+  display: flex;
+  flex-direction: column;
+
+
+  .last-message {
+    font-size: 0.8rem;
+    color: var(--secondary-text-color);
+  }
+}
+
+.chat-area {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+
+  .friend-icon {
+    margin-right: 1rem;
+  }
+
+  .friend-details {
+    .friend-name {
+      font-size: 1rem;
+      color: var(--text-color);
+      font-family: var(--primary-font-family);
+    }
+
+    .status {
+      font-size: 0.8rem;
+      color: var(--input-text-color);
+    }
+  }
+}
+
+.chat-box {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-right: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.chat-input-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+
+  textarea {
+    flex: 1;
+    min-height: 3rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 0.75rem;
+    font-size: 1rem;
+    resize: none;
+  }
+
+  .chat-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    button {
+      background-color: #f1f1f1;
+      color: white;
+      border: none;
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+      cursor: pointer;
+
+      .icon {
+        font-size: 1rem;
+      }
+    }
+  }
+}

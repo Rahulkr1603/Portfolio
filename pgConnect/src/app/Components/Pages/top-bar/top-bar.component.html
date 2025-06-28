@@ -1,0 +1,37 @@
+
+<div class="main-container-home">
+  <div class="top-bar-content">
+    <div class="app-icon">
+      {{ app_name }}
+    </div>
+    <div class="search-box"
+    >
+      <img src='assets/Icons/search.svg' />
+      <input type="search" placeholder='search LetsConnect' />
+    </div>
+
+    <div class="menu-wrapper d-flex justify-content-center">
+      <div class="menu-icon-box" 
+      [class.active]="selectedTab === 'posts'"
+      (click)="menuClick('posts')">
+        <img src='assets/Icons/home.svg' />
+      </div>
+        <div class="menu-icon-box" [class.active]="selectedTab === 'messages'" (click)="menuClick('messages')">
+        <img src='assets/Icons/chat.png' />
+      </div>
+      <div class="menu-icon-box" [class.active]="selectedTab === 'connections'" (click)="menuClick('connections')">
+        <img src='assets/Icons/friendsIcon.png' />
+      </div>
+      <div class="menu-icon-box" [class.active]="selectedTab === 'ai'" (click)="menuClick('ai')">
+        <img src='assets/Icons/Aisearch.svg' />
+      </div>
+      <div class="menu-icon-box" [class.active]="selectedTab === 'community'" (click)="menuClick('community')">
+        <img src='assets/Icons/ask.png' />
+      </div>
+    </div>
+  </div>
+
+  <div class="scrollable-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

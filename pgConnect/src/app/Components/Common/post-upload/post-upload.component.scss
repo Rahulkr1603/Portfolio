@@ -1,0 +1,60 @@
+.post-upload-card {
+  margin: 1rem 8rem 0 8rem;
+  .post-upload-header {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+
+    .user-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    textarea {
+      flex: 1;
+      border: none;
+      resize: none;
+      font-size: 16px;
+      background-color: var(--page-bg-color);
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      outline: none;
+      font-size: 0.8rem;
+    }
+  }
+
+  .post-upload-actions {
+    display: flex;
+    justify-content: start;
+    margin-top: 2rem;
+
+    label {
+      cursor: pointer;
+
+      i {
+        font-size: 1rem;
+        margin: 0 1rem 0 0;
+
+        &:hover {
+          color: #007bff;
+        }
+      }
+    }
+
+    .emoji-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin: 0 1rem 0 0;
+
+      i {
+        font-size: 1rem;
+
+        &:hover {
+          color: #ffc107;
+        }
+      }
+    }
+  }
+}

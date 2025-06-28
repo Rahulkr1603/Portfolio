@@ -1,0 +1,49 @@
+<div class="message-container card-box">
+  <div class="friend-list">
+    <div
+      *ngFor="let friend of friends"
+      class="friend-item"
+      [class.active-friend]="friend === selectedFriend"
+      (click)="selectFriend(friend)"
+    >
+      <div class="user-icon">{{ getInitials(friend.name) }}</div>
+      <div class="friend-info">
+        <div class="secondary-heading m-0">{{ friend.name }}</div>
+        <div class="last-message">{{ friend.lastMessage }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-area" *ngIf="selectedFriend">
+    <div class="chat-header">
+      <div class="user-icon">{{ getInitials(selectedFriend.name) }}</div>
+      <div class="friend-details">
+        <div class="secondary-heading m-0">{{ selectedFriend.name }}</div>
+        <div class="status">Active {{ selectedFriend.activeTime }} ago</div>
+      </div>
+    </div>
+
+    <div class="chat-box">
+      <div class="chat-message" *ngFor="let msg of messages">
+        <div
+          [class]="
+            'bubble ' + (msg.sender === 'user' ? 'send-chat' : 'receive-chat')
+          "
+        >
+          {{ msg.text }}
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-input-container">
+      <textarea
+        [(ngModel)]="newMessage"
+        placeholder="Type a message..."
+      ></textarea>
+      <div class="chat-actions">
+        <app-button [label]="'Send'" (clicked)="sendMessage()"></app-button>
+        <button title="Upload"><i class="icon">📎</i></button>
+      </div>
+    </div>
+  </div>
+</div>

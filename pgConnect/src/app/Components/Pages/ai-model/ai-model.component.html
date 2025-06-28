@@ -1,0 +1,42 @@
+<div class="ai-wrapper">
+  <section class="header-section">
+    <h1>Explore & Create With AI</h1>
+    <p>Discover Trending Content and Interact with Model.</p>
+  </section>
+
+  <section class="card-box">
+    <div class="message-input d-flex flex-column">
+      <textarea
+        [(ngModel)]="userMessage"
+        placeholder="Ask Model anything, describe an image for generation, or get context here..."
+        class="ai-chat-input-field"
+      ></textarea>
+
+      <app-button [label]="'Send'" (clicked)="sendMessage()"></app-button>
+    </div>
+
+    <div class="chat-box" *ngIf="chatHistory.length">
+      <div class="chat-message" *ngFor="let msg of chatHistory">
+        <div class="bubble receive-chat">
+          {{ msg.ai }}
+        </div>
+        <div class="bubble send-chat">
+          {{ msg.user }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card-box">
+    <h4 class="primary-heading">Trending Now</h4>
+    <div class="trending-list">
+      <div class="trending-item" *ngFor="let post of trendingPosts">
+        <a href="#" (click)="viewPost(post)">{{ post.title }}</a>
+        <div class="meta">
+          <span>{{ post.user }}</span>
+          <span>{{ post.likes }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

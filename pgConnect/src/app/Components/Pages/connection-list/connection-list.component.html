@@ -1,0 +1,94 @@
+<div class="connection-list-container card-box">
+  <h2 class="primary-heading">Manage Connections</h2>
+
+  <input
+    type="search"
+    [(ngModel)]="searchQuery"
+    placeholder="Search friends, public, users..."
+    class="search-input"
+  />
+
+  <div class="tabs">
+    <button
+      [class.active]="activeTab === 'followers'"
+      (click)="setTab('followers')"
+    >
+      Followers ({{ followers.length }})
+    </button>
+
+    <button
+      [class.active]="activeTab === 'following'"
+      (click)="setTab('following')"
+    >
+      Following ({{ following.length }})
+    </button>
+    <button
+      [class.active]="activeTab === 'requests'"
+      (click)="setTab('requests')"
+    >
+      Requests ({{ requests.length }})
+    </button>
+    <button
+      [class.active]="activeTab === 'suggestions'"
+      (click)="setTab('suggestions')"
+    >
+      Suggestions
+    </button>
+  </div>
+
+  <div class="user-cards">
+    <ng-container *ngIf="activeTab === 'followers'">
+      <div *ngFor="let user of getFilteredList(followers)" class="user-card">
+        <div class="user-icon">{{ user.icon }}</div>
+        <div class="user-info">
+          <div class="secondary-heading m-0">{{ user.name }}</div>
+          <div class="user-id">{{ user.id }}</div>
+        </div>
+        <div class="actions">
+          <button>Follow Back</button>
+          <button class="unfollow">Unfollow</button>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="activeTab === 'following'">
+      <div *ngFor="let user of getFilteredList(following)" class="user-card">
+        <div class="user-icon">{{ user.icon }}</div>
+        <div class="user-info">
+          <div class="secondary-heading m-0">{{ user.name }}</div>
+          <div class="user-id">{{ user.id }}</div>
+        </div>
+        <div class="actions">
+          <button class="unfollow">Unfollow</button>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="activeTab === 'requests'">
+      <div *ngFor="let user of getFilteredList(requests)" class="user-card">
+        <div class="user-icon">{{ user.icon }}</div>
+        <div class="user-info">
+          <div class="secondary-heading m-0">{{ user.name }}</div>
+          <div class="user-id">{{ user.id }}</div>
+        </div>
+        <div class="actions">
+          <button class="accept">Accept</button>
+          <button class="decline">Decline</button>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="activeTab === 'suggestions'">
+      <div *ngFor="let user of getFilteredList(suggestions)" class="user-card">
+        <div class="user-icon">{{ user.icon }}</div>
+        <div class="user-info">
+          <div class="secondary-heading m-0">{{ user.name }}</div>
+          <div class="user-id">{{ user.id }}</div>
+        </div>
+        <div class="actions">
+          <button class="follow">Follow</button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

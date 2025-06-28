@@ -1,0 +1,109 @@
+<div class="community-container">
+  <div class="ask-question-card card-box">
+    <h2 class="primary-heading">Community Q&A</h2>
+    <input
+      [(ngModel)]="newQuestion.title"
+      placeholder="Title of your question"
+    />
+    <textarea
+      [(ngModel)]="newQuestion.description"
+      placeholder="Describe your question..."
+      rows="3"
+    ></textarea>
+    <input
+      [(ngModel)]="newQuestion.tags"
+      placeholder="Add #tags (comma separated)"
+    />
+
+    <div class="d-flex justify-content-between">
+      <div class="d-flex">
+        <div class="d-flex">
+            <label class="secondary-heading"> Public</label>
+        <input
+          type="radio"
+          name="visibility"
+          [(ngModel)]="newQuestion.visibility"
+          value="public"
+        />
+        </div>
+        <div class="d-flex">
+               <label class="secondary-heading"> Friends</label>
+        <input
+          type="radio"
+          name="visibility"
+          [(ngModel)]="newQuestion.visibility"
+          value="friends"
+        />
+        </div>
+     
+      </div>
+      <app-button
+        [label]="'Post Question'"
+        (clicked)="postQuestion()"
+      ></app-button>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button
+      [class.active]="currentTab === 'recent'"
+      (click)="currentTab = 'recent'"
+    >
+      Recent
+    </button>
+    <button [class.active]="currentTab === 'my'" (click)="currentTab = 'my'">
+      My Questions
+    </button>
+    <button [class.active]="currentTab === 'all'" (click)="currentTab = 'all'">
+      All Questions
+    </button>
+  </div>
+
+  <div class="recent-questions">
+    <div
+      *ngFor="let q of getQuestionsForTab(); let i = index"
+      class="question-card"
+    >
+      <h4>{{ q.title }}</h4>
+      <div class="question-meta">
+        <span class="user-icon initials">{{ getInitials(q.user) }}</span>
+        {{ q.user }} · {{ q.time }}
+      </div>
+      <div class="question-tags">
+        <span *ngFor="let tag of q.tags" class="tag">#{{ tag }}</span>
+      </div>
+      <div class="question-actions">
+        <span>{{ q.answers.length }} Answers</span>
+
+        <app-button
+          [label]="'View Question'"
+          (clicked)="toggleQuestion(i)"
+        ></app-button>
+      </div>
+
+      <!-- Expand Question & Answers -->
+      <div *ngIf="expandedQuestionIndex === i" class="question-detail">
+        <p>{{ q.description }}</p>
+
+        <!-- Answers -->
+        <div class="answers">
+          <h5 class="primary-heading">Answers</h5>
+          <div *ngFor="let a of q.answers" class="secondary-heading">
+            <strong class="secondary-heading">{{ a.user }}:</strong> {{ a.text }}
+            <div class="answer-meta">
+              {{ a.time }} | 👍 {{ a.likes }} | 👎 {{ a.dislikes }}
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <textarea  [(ngModel)]="q.newAnswer" placeholder="Write your answer..."></textarea>
+             <app-button
+        [label]="'Send'"
+        (click)="postAnswer(q, q.newAnswer); q.newAnswer = ''"
+      ></app-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

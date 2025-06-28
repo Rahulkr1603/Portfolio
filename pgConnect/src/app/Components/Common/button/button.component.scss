@@ -1,0 +1,11 @@
+.default-btn{
+    border: none;
+    background-color: var(--btn-bg);
+    color: var(--btn-text-color);
+    border-radius: 0.3rem;
+    font-size: 0.8rem;
+    height: 2rem;
+    width: fit-content;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    cursor: pointer;
+}

@@ -1,0 +1,89 @@
+.post-card {
+  margin: 1rem 8rem 0 8rem;
+
+  .post-header {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 12px;
+
+    .user-icon {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      margin-right: 12px;
+    }
+
+    .user-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+
+      .user-top-row {
+        gap: 8px;
+
+        .user-name {
+          font-size: 1.2rem;
+          color: var(--text-color);
+        }
+
+        .user-id {
+          font-size: 0.8rem;
+          color: var(--text-color);
+        }
+
+        .post-time {
+          font-size: 0.6rem;
+          color: var(--input-text-color);
+        }
+      }
+    }
+  }
+
+  .post-content {
+    .post-text {
+      font-size: 0.8rem;
+      margin: 0;
+    }
+    .post-tag {
+      color: #1da1f2; // Twitter blue
+      font-size: 0.8rem;
+      margin: 0 0 0 0.5rem;
+    }
+
+    .post-media {
+      text-align: center;
+      width: 100%;
+      height: 30rem;
+      border-radius: 0.6rem;
+      margin-top: 10px;
+    }
+  }
+
+  .post-actions {
+    display: flex;
+    justify-content: start;
+    margin-top: 2rem;
+
+    button {
+      border: none;
+      background: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      color: var(--text-color);
+      opacity: 0.5;
+      font-size: 0.8rem;
+      margin-right: 1rem;
+
+      i {
+        margin-right: 4px;
+        font-size: 0.8rem;
+      }
+
+      &:hover {
+        color: var(--btn-hover);
+      }
+    }
+  }
+}

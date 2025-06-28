@@ -1,0 +1,59 @@
+.app-Icon{
+    font-size: clamp(24px, 5vw, 48px);
+    color: var(--btn-bg);
+    font-family: var(--primary-font-family);
+    text-align: center;
+    margin: 0;
+  
+}
+.custom-card-box {
+    width: 100%; 
+    height: auto;             
+    margin: 0 auto;   
+    padding: 2rem;       
+  }
+  
+.secondary-label-text{
+    color: var(--input-text-color);
+    text-align: center;
+    margin: 0.5rem;
+}
+.primary-label-text{
+    text-align: center;
+    margin: 0.5rem;
+}
+.forgot-label{
+    cursor: pointer;
+    color: var(--btn-bg);
+    opacity: 0.8;
+    text-align: right;
+    font-size: 0.8rem;
+    line-height: 1.4rem;
+
+}
+.btn-wrapper{
+    text-align: center;
+}
+.sign-btn{
+    font-size: 1rem;
+    line-height: 1.4rem;
+    color: var(--btn-bg);
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+
+    
+.parent{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content:space-around;
+    gap:10px;
+}
+.child{
+   height: 180px;
+    background-color: palegreen;
+    border:1px solid;
+    flex:1;
+}
