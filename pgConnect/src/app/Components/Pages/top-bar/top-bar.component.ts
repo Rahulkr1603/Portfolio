@@ -1,5 +1,5 @@
 // top-bar.component.ts
-import { Component } from '@angular/core';
+import { Component, } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AppConstants } from '../../Common/constant';
@@ -14,12 +14,22 @@ import { RouterModule } from '@angular/router';
 })
 export class TopBarComponent {
   app_name = AppConstants.app_name;
-  selectedTab: string = 'posts';
+  selectedTab: any = 'posts';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    router.events
+      .subscribe((event: any) => {
+        if (event.navigationTrigger === 'popstate') {
+          const currentUrl = this.router.url;
+        this.selectedTab =currentUrl.split('/').pop()
+        }
+      });
+  }
 
   menuClick(menuName: string) {
     this.selectedTab = menuName;
     this.router.navigate(['/dashboard', menuName]);
   }
+ 
+  
 }
